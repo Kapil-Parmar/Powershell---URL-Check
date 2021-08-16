@@ -34,14 +34,12 @@ for($i = 2; $i -le ($ws.UsedRange.Rows).count; $i++)
   catch 
   {
     #update exception message in excel incase of exception
-    #$res = $PsItem.Exception.Response
-    #$errorMessage = $Error[0].Exception.GetType().FullName
     $errorMessage = $PSItem.Exception.Message
     $ws.cells.item($i,2) = $errorMessage
   }
 }
 
-#execute macro which will update cell color of status code which are not 200 as red
+#execute macro which will update cell color of status code to red which are not 200
 $xl.Run("FormatCells")
 
 #save report sheet
